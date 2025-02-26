@@ -11,7 +11,7 @@ class FixturesListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-        itemBuilder: (context, index) => FixturesLeague(response: fixtures[index]),
+        itemBuilder: (context, index) => FixturesItem(response: fixtures[index]),
         separatorBuilder: (context, index) => Padding(
           padding: const EdgeInsets.symmetric(vertical: 8),
           child: Divider(),

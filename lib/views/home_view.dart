@@ -4,6 +4,8 @@ import 'package:football_app/cubits/fixtures_cubit.dart';
 import 'package:football_app/models/fixtures_model.dart';
 import 'package:football_app/widgets/fixtures_date.dart';
 import 'package:football_app/widgets/fixtures_list_view.dart';
+import 'package:intl/intl.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -19,7 +21,13 @@ class HomeView extends StatelessWidget {
           future: BlocProvider.of<FixturesCubit>(context).fetchData(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
+              return Scaffold(
+                body: SafeArea(
+                  child: Center(child: LoadingAnimationWidget.horizontalRotatingDots(
+                      color: Colors.grey,
+                      size: 30)),
+                ),
+              );
             }
 
             return Scaffold(

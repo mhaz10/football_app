@@ -26,13 +26,15 @@ class FixturesItem extends StatelessWidget {
 
       child: Column(
         children: [
+          FixturesLeague(league: response.league!),
+
           Row(
             children: [
               Expanded(
                 child: FixturesTeams(home: response.teams!.home!,),
               ),
 
-              FixturesStatus(),
+              FixturesStatus(response: response),
 
               Expanded(
                 child: FixturesTeams(home: response.teams!.away!,),

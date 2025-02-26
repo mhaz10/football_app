@@ -4,3 +4,5 @@ part of 'fixtures_cubit.dart';
 sealed class FixturesState {}
 
 final class FixturesInitial extends FixturesState {}
+
+final class FixturesChangeDate extends FixturesState {}

@@ -4,6 +4,7 @@ import 'package:football_app/cubits/fixtures_cubit.dart';
 import 'package:football_app/models/fixtures_model.dart';
 import 'package:football_app/services/dio_service.dart';
 import 'package:football_app/views/splash_view.dart';
+import 'package:intl/intl.dart';
 
 import 'constants.dart';
 
