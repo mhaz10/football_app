@@ -7,13 +7,18 @@ class FixturesModel {
   final Parameters? parameters;
   final List<Response> response;
 
-  factory FixturesModel.fromJson(Map<String, dynamic> json){
+  factory FixturesModel.fromJson(Map<String, dynamic> json) {
     return FixturesModel(
-      parameters: json["parameters"] == null ? null : Parameters.fromJson(json["parameters"]),
-      response: json["response"] == null ? [] : (json["response"] as List).map((element) => (Response.fromJson(element))).toList(),
+      parameters: json["parameters"] == null
+          ? null
+          : Parameters.fromJson(json["parameters"]),
+      response: json["response"] == null
+          ? []
+          : (json["response"] as List)
+              .map((element) => (Response.fromJson(element)))
+              .toList(),
     );
   }
-
 }
 
 class Parameters {
@@ -23,12 +28,11 @@ class Parameters {
 
   final DateTime? date;
 
-  factory Parameters.fromJson(Map<String, dynamic> json){
+  factory Parameters.fromJson(Map<String, dynamic> json) {
     return Parameters(
       date: DateTime.tryParse(json["date"] ?? ""),
     );
   }
-
 }
 
 class Response {
@@ -46,16 +50,16 @@ class Response {
   final Goals? goals;
   final Score? score;
 
-  factory Response.fromJson(Map<String, dynamic> json){
+  factory Response.fromJson(Map<String, dynamic> json) {
     return Response(
-      fixture: json["fixture"] == null ? null : Fixture.fromJson(json["fixture"]),
+      fixture:
+          json["fixture"] == null ? null : Fixture.fromJson(json["fixture"]),
       league: json["league"] == null ? null : League.fromJson(json["league"]),
       teams: json["teams"] == null ? null : Teams.fromJson(json["teams"]),
       goals: json["goals"] == null ? null : Goals.fromJson(json["goals"]),
       score: json["score"] == null ? null : Score.fromJson(json["score"]),
     );
   }
-
 }
 
 class Fixture {
@@ -65,20 +69,18 @@ class Fixture {
     required this.status,
   });
 
-
   final String? timezone;
   final DateTime? date;
 
   final Status? status;
 
-  factory Fixture.fromJson(Map<String, dynamic> json){
+  factory Fixture.fromJson(Map<String, dynamic> json) {
     return Fixture(
       timezone: json["timezone"],
       date: DateTime.tryParse(json["date"] ?? ""),
       status: json["status"] == null ? null : Status.fromJson(json["status"]),
     );
   }
-
 }
 
 class Status {
@@ -94,7 +96,7 @@ class Status {
   final int? elapsed;
   final int? extra;
 
-  factory Status.fromJson(Map<String, dynamic> json){
+  factory Status.fromJson(Map<String, dynamic> json) {
     return Status(
       long: json["long"],
       short: json["short"],
@@ -102,7 +104,6 @@ class Status {
       extra: json["extra"],
     );
   }
-
 }
 
 class Goals {
@@ -114,13 +115,12 @@ class Goals {
   final int? home;
   final int? away;
 
-  factory Goals.fromJson(Map<String, dynamic> json){
+  factory Goals.fromJson(Map<String, dynamic> json) {
     return Goals(
       home: json["home"],
       away: json["away"],
     );
   }
-
 }
 
 class League {
@@ -138,9 +138,7 @@ class League {
   final String? logo;
   final String? flag;
 
-
-
-  factory League.fromJson(Map<String, dynamic> json){
+  factory League.fromJson(Map<String, dynamic> json) {
     return League(
       id: json["id"],
       name: json["name"],
@@ -149,7 +147,6 @@ class League {
       flag: json["flag"],
     );
   }
-
 }
 
 class Score {
@@ -165,15 +162,17 @@ class Score {
   final Goals? extratime;
   final Goals? penalty;
 
-  factory Score.fromJson(Map<String, dynamic> json){
+  factory Score.fromJson(Map<String, dynamic> json) {
     return Score(
-      halftime: json["halftime"] == null ? null : Goals.fromJson(json["halftime"]),
-      fulltime: json["fulltime"] == null ? null : Goals.fromJson(json["fulltime"]),
-      extratime: json["extratime"] == null ? null : Goals.fromJson(json["extratime"]),
+      halftime:
+          json["halftime"] == null ? null : Goals.fromJson(json["halftime"]),
+      fulltime:
+          json["fulltime"] == null ? null : Goals.fromJson(json["fulltime"]),
+      extratime:
+          json["extratime"] == null ? null : Goals.fromJson(json["extratime"]),
       penalty: json["penalty"] == null ? null : Goals.fromJson(json["penalty"]),
     );
   }
-
 }
 
 class Teams {
@@ -185,13 +184,12 @@ class Teams {
   final Home? home;
   final Home? away;
 
-  factory Teams.fromJson(Map<String, dynamic> json){
+  factory Teams.fromJson(Map<String, dynamic> json) {
     return Teams(
       home: json["home"] == null ? null : Home.fromJson(json["home"]),
       away: json["away"] == null ? null : Home.fromJson(json["away"]),
     );
   }
-
 }
 
 class Home {
@@ -203,11 +201,10 @@ class Home {
   final String? name;
   final String? logo;
 
-  factory Home.fromJson(Map<String, dynamic> json){
+  factory Home.fromJson(Map<String, dynamic> json) {
     return Home(
       name: json["name"],
       logo: json["logo"],
     );
   }
-
 }

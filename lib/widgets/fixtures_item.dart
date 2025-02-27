@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:football_app/models/fixtures_model.dart';
+import 'package:football_app/widgets/circular_timer.dart';
 import 'package:football_app/widgets/fixtrues_league.dart';
 import 'package:football_app/widgets/fixtrues_state.dart';
 import 'package:football_app/widgets/fixtures_teams.dart';
+import 'dart:async';
+
 
 class FixturesItem extends StatelessWidget {
   const FixturesItem({super.key, required this.response});
@@ -18,26 +21,32 @@ class FixturesItem extends StatelessWidget {
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [
-                Colors.black,
-                Colors.grey.shade800
-              ])
-      ),
-
+              colors: [Colors.black, Colors.grey.shade800])),
       child: Column(
         children: [
           FixturesLeague(league: response.league!),
-
           Row(
             children: [
               Expanded(
-                child: FixturesTeams(home: response.teams!.home!,),
+                child: FixturesTeams(
+                  home: response.teams!.home!,
+                ),
               ),
 
-              FixturesStatus(response: response),
+              Center(
+                child: CircularTimer(
+                  progress: 0.2,
+                  time: '68:43',
+                ),
+              ),
+
+
+              // FixturesStatus(response: response),
 
               Expanded(
-                child: FixturesTeams(home: response.teams!.away!,),
+                child: FixturesTeams(
+                  home: response.teams!.away!,
+                ),
               ),
             ],
           )
@@ -46,3 +55,5 @@ class FixturesItem extends StatelessWidget {
     );
   }
 }
+
+

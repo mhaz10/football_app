@@ -14,18 +14,16 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<FixturesCubit, FixturesState>(
       listener: (context, state) {},
-
       builder: (context, state) {
-
         return FutureBuilder(
           future: BlocProvider.of<FixturesCubit>(context).fetchData(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Scaffold(
                 body: SafeArea(
-                  child: Center(child: LoadingAnimationWidget.horizontalRotatingDots(
-                      color: Colors.grey,
-                      size: 30)),
+                  child: Center(
+                      child: LoadingAnimationWidget.horizontalRotatingDots(
+                          color: Colors.grey, size: 30)),
                 ),
               );
             }
@@ -39,12 +37,13 @@ class HomeView extends StatelessWidget {
                       radius: 24,
                       backgroundImage: AssetImage('assets/images/football.png'),
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Text('FootBall App')
                   ],
                 ),
               ),
-
               body: Padding(
                 padding: const EdgeInsets.only(
                     right: 14, left: 14, top: 8, bottom: 8),
@@ -53,13 +52,13 @@ class HomeView extends StatelessWidget {
                     FixturesDate(
                       date: snapshot.data!.parameters!.date!,
                     ),
-
-                    SizedBox(height: 16,),
-
+                    SizedBox(
+                      height: 16,
+                    ),
                     Expanded(
                         child: FixturesListView(
-                          fixtures: snapshot.data!.response,
-                        )),
+                      fixtures: snapshot.data!.response,
+                    )),
                   ],
                 ),
               ),
@@ -70,7 +69,3 @@ class HomeView extends StatelessWidget {
     );
   }
 }
-
-
-
-

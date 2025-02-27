@@ -1,5 +1,5 @@
 const kBaseUrl = 'https://v3.football.api-sports.io/';
 
-const kApiKey = '5902bc5c8eb59d4d1e63b39bd3d7956b';
+const kApiKey = '58d6424f37d74a0d62f8bb2f51f8b5a8';
 
 const kFixtures = 'fixtures';
